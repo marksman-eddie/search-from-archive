@@ -1,0 +1,21 @@
+﻿@model search_from_archive.Models.ListOutputModel
+<table class="table">
+    <thead class="thead-dark">
+        <tr>            
+            <th scope="col">Шифр</th>
+            <th scope="col">Наименование</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var row in Model.listOutputData)
+        {
+        <tr>
+            <!-- <td><a href='@string.Format("http://gtng.domgtng.ru/arhive/Prjview.aspx?viewBy={0}&obj={1}&csid={2}&var=1",@row.Uid,@row.Hn,@row.Csid)'>@row.code</a></td> -->
+            <td><a class="btn btn-outline-primary" href='@string.Format("http://gtng.domgtng.ru/arhive/Prjview.aspx?viewBy={0}&obj={1}&csid={2}&var=1",@row.Uid,@row.Hn,@row.Csid)' role="button">@row.code</a></td>
+           
+            <td><a href='@string.Format("http://gtng.domgtng.ru/arhive/Prjview.aspx?viewBy={0}&obj={1}&csid={2}&var=1",@row.Uid,@row.Hn,@row.Csid)'>@row.FolderName</a></td>
+        </tr>
+                 }
+
+                </tbody>
+            </table>
