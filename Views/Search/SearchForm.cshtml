@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                        <select class="form-select" id="floatingSelectGrid" name="select1" aria-label="Floating label select example">
                             <option selected>Проекты</option>
                             <option value="1">Папки</option>
                             <option value="2">Карточки</option>
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                        <select class="form-select" id="floatingSelectGrid" name="select2" aria-label="Floating label select example">
                             <option selected>Все возможные включения</option>
                             <option value="1">Полное соответствие</option>
                         </select>
@@ -28,7 +28,7 @@
                 </div>
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+                        <select class="form-select" id="floatingSelectGrid" name="select3" aria-label="Floating label select example">
                             <option selected>Архив ГТНГ</option>
                             <option value="1">Архив ГМС</option>
                         </select>
@@ -51,18 +51,7 @@
         </div>
         <div class="form-element" style="margin-top: 20px;">
             <div class="row">
-                <div class="col">
-                    @*<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="pills-object-tab" data-bs-toggle="pill" data-bs-target="#pills-object" type="button" role="tab" aria-controls="pills-object" aria-selected="true">Обьекты</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Ф.И.О.</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Инф. о листе</button>
-            </li>
-        </ul>*@
+                <div class="col">                    
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-object" role="tab" aria-controls="nav-object" aria-selected="true">Обьекты</a>
@@ -76,10 +65,9 @@
                                 <div class="col">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getModal(1)">Код проекта</button>
-                                            
+                                            <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getModal(1)">Код проекта</button>                                            
                                         </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="1" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                                     </div>
                                 </div>
                                 <div class="col">
@@ -117,7 +105,7 @@
                                 <div class="col">
                                     <div class="input-group mb-3">
                                         <div class="input-group-prepend">
-                                            <span class="input-group-text">Код промысла (документации):</span>
+                                            <span class="input-group-text">Код промысла:</span>
                                         </div>
                                         <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                                     </div>
@@ -277,14 +265,21 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="exampleFormControlSelect2">Выберите значения из списка(выбор нескольких с помощью клавиши "Ctrl")</label>
-                        <select multiple class="form-control" id="exampleFormControlSelect2">                            
+                        <label for="exampleFormControlSelect1">Выберите значения из списка(выбор нескольких с помощью клавиши "Ctrl"):</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect1">
                         </select>
                     </div>
+                    <div class="form-group2">
+                        <label for="exampleFormControlSelect2">Выбранные значения:</label>
+                        <select multiple class="form-control" id="exampleFormControlSelect2">
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-                    <button type="button" class="btn btn-primary">Выбрать</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearOutput()">Сбросить</button>                    
+                    <button type="button" class="btn btn-primary" onclick="addInModal()">Добавить</button>
+                    <button type="button" class="btn btn-primary" onclick="addToInput()">Выбрать</button>
                 </div>
             </div>
         </div>
