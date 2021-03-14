@@ -27,6 +27,13 @@ namespace search_from_archive.Controllers
             return View();
         }
 
+        public enum SearchTarget
+        {
+            Projects = 0,
+            Folders = 1,
+            Cards = 2
+        }
+
         [HttpPost]
         public IActionResult SearchForm(InputDataModel InputData)
         {
@@ -41,8 +48,10 @@ namespace search_from_archive.Controllers
                  sp.Add(new SqlParameter("@Date2", InputData.Date2));
                 //sp.Add(new SqlParameter("@Date2", "01.02.2019"));
             }
+            sp.Add(new SqlParameter("@ProjectsFoldersCards", Convert.ToInt32(InputData.Target)));
             
-            var Data = _context._OutputDataModels.FromSqlRaw("ar_Search6_new @Date1=@Date1,@Date2=@Date2", sp.ToArray());
+            var Data = _context._OutputDataModels.FromSqlRaw("ar_Search6_new @Date1=@Date1,@Date2=@Date2,@ProjectsFoldersCards=@ProjectsFoldersCards", sp.ToArray());
+
             ListOutputModel listOutput = new ListOutputModel();
             foreach(var dataRow in Data)
             {

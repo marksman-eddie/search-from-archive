@@ -25,19 +25,31 @@ namespace search_from_archive.Controllers
         [HttpGet("modalCode")]
         public async Task<ListPopupModel> ModalCode(int idButton)
         {
-        ListPopupModel dataCollection = new ListPopupModel();
+            ListPopupModel dataCollection = new ListPopupModel();            
                 switch (idButton)
             {
                 case 1:
                     dataCollection.popupName = "Код проекта";
-                    var itemCollection = await _context.folders.Select(c => c.Code).Distinct().Take(100).ToListAsync();
-                    foreach (var item in itemCollection)
+                    var itemCollection_1 = await _context.folders.Select(c => c.Code).Distinct().Take(100).ToListAsync();
+                    foreach (var item in itemCollection_1)
                     {
                         PopupModel newItem = new PopupModel
                         { 
                             popupItem = item 
                         };                        
                         dataCollection.listPopupModel.Add(newItem);                        
+                    }
+                    return dataCollection;
+                case 2:
+                    dataCollection.popupName = "Стадия";
+                    var itemCollection_2 = await _context.spr.Where(i => i.Cat_spr_id == 156).ToListAsync();                        
+                    foreach (var item in itemCollection_2)
+                    {
+                        PopupModel newItem = new PopupModel
+                        {
+                            popupItem = item.Full_name
+                        };
+                        dataCollection.listPopupModel.Add(newItem);
                     }
                     return dataCollection;
 

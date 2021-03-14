@@ -1,10 +1,7 @@
 ﻿using ArchiveSearch.Database.DbModel;
 using ArchiveSearch.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using search_from_archive.Database.DbModel;
 
 namespace ArchiveSearch.Database
 {
@@ -16,11 +13,13 @@ namespace ArchiveSearch.Database
         }
         public DbSet<OutputDataModel> _OutputDataModels { get; set; }
         public DbSet<FoldersDbModel> folders { get; set; }
+        public DbSet<SprDbModel> spr { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OutputDataModel>().HasNoKey();
             modelBuilder.Entity<FoldersDbModel>().HasNoKey();
+            modelBuilder.Entity<SprDbModel>().HasNoKey();
         }
 
 

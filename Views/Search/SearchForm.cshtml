@@ -1,16 +1,13 @@
 ﻿
 @using (Html.BeginForm("SearchForm", "Search", FormMethod.Post))
 {
-
-<script src="@Url.Content("~/js/site.js")" type="text/javascript"></script>   
-
     <div class="container">
         <div class="form-element" style="margin-top: 20px;">
             <div class="row">
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" name="select1" aria-label="Floating label select example">
-                            <option selected>Проекты</option>
+                        <select class="form-select" id="floatingSelectGrid" name="target" aria-label="Floating label select example">
+                            <option value="0" selected>Проекты</option>
                             <option value="1">Папки</option>
                             <option value="2">Карточки</option>
                         </select>
@@ -51,187 +48,186 @@
         </div>
         <div class="form-element" style="margin-top: 20px;">
             <div class="row">
-                <div class="col">                    
+                <div class="col">
                     <nav>
-                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                        <div class="nav nav-tabs" style="margin-bottom: 10px;" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-object" role="tab" aria-controls="nav-object" aria-selected="true">Обьекты</a>
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-fio" role="tab" aria-controls="nav-fio" aria-selected="false">Ф.И.О.</a>
                             <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Инф. о листе</a>
                         </div>
                     </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-object" role="tabpanel" aria-labelledby="nav-object-tab">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#exampleModalCenter" onclick="getModal(1)">Код проекта</button>                                            
-                                        </div>
+                    <div id="content-nav-list">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-object" role="tabpanel" aria-labelledby="nav-object-tab">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="1" @*onclick="getModal()"*@>Код проекта</button>
+                                            </div>
                                             <input id="1" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Назв. проекта:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Назв. проекта:</span>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Инв. номер:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                                         </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button name="btn-search-form" value="2" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="2" @*onclick="getModal(2)"*@>Стадия</button>
+                                            </div>
+                                            <input id="2" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Код промысла:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Назв. промысла:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Код площадки (тома):</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Назв. площадки:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Код позиции (книги):</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Назв. позиции:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Код марки (части):</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Назв. марки:</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-fio" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary" type="button">Разработчик</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary" type="button">Нач. отдела</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary" type="button">Нач. группы</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary" type="button">ГИП</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button class="btn btn-outline-secondary" type="button">Глав. спец.</button>
+                                            </div>
+                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col">
                                     </div>
                                 </div>
                             </div>
-
-
-
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Инв. номер:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="button">Стадия</button>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Код промысла:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Назв. промысла:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Код площадки (тома):</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Назв. площадки:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Код позиции (книги):</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Назв. позиции:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Код марки (части):</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Назв. марки:</span>
-                                        </div>
-                                        <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                                    </div>
-                                </div>
-
-                            </div>
+                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                         </div>
-                        <div class="tab-pane fade" id="nav-fio" role="tabpanel" aria-labelledby="nav-home-tab">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="button">Разработчик</button>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="button">Нач. отдела</button>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="button">Нач. группы</button>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="button">ГИП</button>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <div class="input-group-prepend">
-                                            <button class="btn btn-outline-secondary" type="button">Глав. спец.</button>
-                                        </div>
-                                        <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
-                                    </div>
-                                </div>
-                                <div class="col">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -240,13 +236,13 @@
                 <div class="col">
                     <div class="form-group">
                         <label for="inputDate">Нач. дата учета :</label>
-                        <input type="date" name="Date1" class="form-control">
+                        <input value="@(new DateTime(DateTime.Now.Year,1,1).ToString("yyyy-MM-dd") )" type="date" name="Date1" class="form-control">
                     </div>
                 </div>
                 <div class="col">
                     <div class="form-group">
                         <label for="inputDate">Кон. дата учета :</label>
-                        <input type="date" name="Date2" class="form-control">
+                        <input value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date" name="Date2" class="form-control">
                     </div>
                 </div>
             </div>
@@ -255,8 +251,8 @@
             <input class="btn btn-primary" type="submit" value="Найти">
             <input class="btn btn-primary" type="reset" value="Сброс">
         </div>
-    </div>    
-    <div role="dialog" class="modal" tabindex="-1">
+    </div>
+    <div id="modal" role="dialog" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -277,13 +273,14 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" onclick="clearOutput()">Сбросить</button>                    
+                    <button type="button" class="btn btn-secondary" onclick="clearOutput()">Сбросить</button>
                     <button type="button" class="btn btn-primary" onclick="addInModal()">Добавить</button>
                     <button type="button" class="btn btn-primary" onclick="addToInput()">Выбрать</button>
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    <script src="@Url.Content("~/js/site.js")" type="text/javascript"></script>
 }
 
 
