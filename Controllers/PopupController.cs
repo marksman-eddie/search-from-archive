@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using search_from_archive.Models;
 using ArchiveSearch.Database;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 
 namespace search_from_archive.Controllers
 {
@@ -30,12 +31,12 @@ namespace search_from_archive.Controllers
             {
                 case 1:
                     dataCollection.popupName = "Код проекта";
-                    var itemCollection_1 = await _context.folders.Select(c => c.Code).Distinct().Take(100).ToListAsync();
+                    var itemCollection_1 = await _context.folders.Select(c => c.Code).Distinct().Take(100).ToListAsync();                    
                     foreach (var item in itemCollection_1)
                     {
                         PopupModel newItem = new PopupModel
-                        { 
-                            popupItem = item 
+                        {
+                            popupItem = item.ToString()
                         };                        
                         dataCollection.listPopupModel.Add(newItem);                        
                     }

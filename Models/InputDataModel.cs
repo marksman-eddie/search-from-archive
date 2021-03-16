@@ -11,6 +11,7 @@ namespace search_from_archive.Models
         public DateTime Date1 { get; set; }
         public DateTime Date2 { get; set; }
         public SearchTarget Target { get; set; }
+        public checkFile CheckFile { get; set; }
 
     }
 }

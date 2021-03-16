@@ -6,9 +6,9 @@
             <div class="row">
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" name="target" aria-label="Floating label select example">
-                            <option value="0" selected>Проекты</option>
-                            <option value="1">Папки</option>
+                        <select class="form-select" id="floatingSelectGrid" name="Target" aria-label="Floating label select example">
+                            <option value="0">Проекты</option>
+                            <option value="1" selected>Папки</option>
                             <option value="2">Карточки</option>
                         </select>
                         <label for="floatingSelect">Что искать?</label>
@@ -16,32 +16,20 @@
                 </div>
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" name="select2" aria-label="Floating label select example">
-                            <option selected>Все возможные включения</option>
-                            <option value="1">Полное соответствие</option>
+                        <select class="form-select" id="floatingSelectGrid" name="CheckFile" aria-label="Floating label select example">
+                            <option value="0">Без подключенных файлов</option>
+                            <option value="1" selected>С подключенными файлами</option>
                         </select>
-                        <label for="floatingSelect">Как искать?</label>
+                        <label for="floatingSelect">Файлы</label>
                     </div>
                 </div>
                 <div class="col-sm">
                     <div class="form-floating">
-                        <select class="form-select" id="floatingSelectGrid" name="select3" aria-label="Floating label select example">
-                            <option selected>Архив ГТНГ</option>
+                        <select class="form-select" id="floatingSelectGrid" name="FromDomain" aria-label="Floating label select example">
+                            <option value="0" selected>Архив ГТНГ</option>
                             <option value="1">Архив ГМС</option>
                         </select>
                         <label for="floatingSelect">Что искать?</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-element" style="margin-top: 20px;">
-            <div class="row">
-                <div class="col">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
-                        <label class="form-check-label" for="defaultCheck1">
-                            Только с подключенными файлами
-                        </label>
                     </div>
                 </div>
             </div>
@@ -63,7 +51,7 @@
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="1" @*onclick="getModal()"*@>Код проекта</button>
+                                                <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="1">Код проекта</button>
                                             </div>
                                             <input id="1" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
                                         </div>
@@ -83,7 +71,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Инв. номер:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" aria-label="">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -102,7 +90,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Код промысла:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" aria-label="">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -248,10 +236,12 @@
             </div>
         </div>
         <div class="form-element" style="margin-top: 20px;">
-            <input class="btn btn-primary" type="submit" value="Найти">
+            <button id="btn-search" class="btn btn-primary" data-toggle="popover" data-container="body" data-trigger="focus" data-placement="bottom" data-content="Выберите более конкретизированные параметры поиска" type="submit">Найти</button>
             <input class="btn btn-primary" type="reset" value="Сброс">
         </div>
     </div>
+    <!--<input id="btn-search" class="btn btn-primary"--> @*type="reset"*@ <!--value="Сброс">-->
+    @*<button id="btn-search" type="button" class="btn btn-lg btn-danger" data-toggle="" data-content="And here's some amazing content. It's very engaging. Right?">dsadsa</button>*@
     <div id="modal" role="dialog" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">

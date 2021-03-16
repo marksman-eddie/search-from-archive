@@ -34,23 +34,23 @@ namespace search_from_archive.Controllers
             Cards = 2
         }
 
+        public enum checkFile
+        {
+            NoneCheck = 0,
+            CheckFile = 1
+            
+        }
+
         [HttpPost]
         public IActionResult SearchForm(InputDataModel InputData)
         {
             List<SqlParameter> sp = new List<SqlParameter>();
-            if (InputData.Date1 != null)
-            {
-                  sp.Add(new SqlParameter("@Date1",InputData.Date1));
-                //sp.Add(new SqlParameter("@Date1", "01.01.2019"));
-            }
-            if (InputData.Date2 != null)
-            {
-                 sp.Add(new SqlParameter("@Date2", InputData.Date2));
-                //sp.Add(new SqlParameter("@Date2", "01.02.2019"));
-            }
+            sp.Add(new SqlParameter("@Date1",InputData.Date1));
+            sp.Add(new SqlParameter("@Date2", InputData.Date2));
             sp.Add(new SqlParameter("@ProjectsFoldersCards", Convert.ToInt32(InputData.Target)));
-            
-            var Data = _context._OutputDataModels.FromSqlRaw("ar_Search6_new @Date1=@Date1,@Date2=@Date2,@ProjectsFoldersCards=@ProjectsFoldersCards", sp.ToArray());
+            sp.Add(new SqlParameter("@checkFile", Convert.ToInt32(InputData.CheckFile)));
+
+            var Data = _context._OutputDataModels.FromSqlRaw("ar_Search6_new @Date1=@Date1,@Date2=@Date2,@ProjectsFoldersCards=@ProjectsFoldersCards,@checkFile=@checkFile", sp.ToArray());
 
             ListOutputModel listOutput = new ListOutputModel();
             foreach(var dataRow in Data)
