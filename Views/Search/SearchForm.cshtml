@@ -53,7 +53,7 @@
                                             <div class="input-group-prepend">
                                                 <button name="btn-search-form" value="1" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="1">Код проекта</button>
                                             </div>
-                                            <input id="1" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="1" type="text" class="form-control" placeholder="" name="ProjectCode" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -61,7 +61,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Назв. проекта:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="ProjectName">
                                         </div>
                                     </div>
                                 </div>
@@ -70,16 +70,16 @@
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Инв. номер:</span>
-                                            </div>
-                                            <input type="text" class="form-control" aria-label="">
+                                            </div>        
+                                            <input type="text" class="form-control" name="InvEntoryNumber">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button name="btn-search-form" value="2" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="2" @*onclick="getModal(2)"*@>Стадия</button>
+                                                <button name="btn-search-form" value="2" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="2">Стадия</button>
                                             </div>
-                                            <input id="2" type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="2" type="text" class="form-control" placeholder="" name="ProjectStage" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
 
@@ -90,7 +90,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Код промысла:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="">
+                                            <input type="text" class="form-control" name="PromyselCode">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -98,7 +98,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Назв. промысла:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="PromyselName">
                                         </div>
                                     </div>
 
@@ -109,7 +109,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Код площадки (тома):</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="PloshCode">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -117,7 +117,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Назв. площадки:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="PloshName">
                                         </div>
                                     </div>
 
@@ -128,7 +128,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Код позиции (книги):</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="PositionCode">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -136,7 +136,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Назв. позиции:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="PositionName">
                                         </div>
                                     </div>
 
@@ -147,7 +147,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Код марки (части):</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="MarkCode">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -155,7 +155,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text">Назв. марки:</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+                                            <input type="text" class="form-control" name="MarkName">
                                         </div>
                                     </div>
 

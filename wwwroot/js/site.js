@@ -58,9 +58,9 @@ function clearOutput() {
 }
 
 function addToInput() {    
-    let selected = Array.from(exampleFormControlSelect2.options).map(option => option.value);
-    let inputForm = document.getElementById(idInput);
-    inputForm.value = selected;
+    let selected = Array.from(exampleFormControlSelect2.options).map(option => option.value);    
+    let inputForm = document.getElementById(idInput);       
+    inputForm.value = selected.join(", ");
     $('.modal').modal('hide');
 }
 
