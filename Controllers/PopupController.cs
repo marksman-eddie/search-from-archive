@@ -31,12 +31,13 @@ namespace search_from_archive.Controllers
             {
                 case 1:
                     dataCollection.popupName = "Код проекта";
-                    var itemCollection_1 = await _context.folders.Select(c => c.Code).Distinct().Take(100).ToListAsync();                    
+                    var itemCollection_1 = await _context.CurProjects.ToListAsync();                    
                     foreach (var item in itemCollection_1)
                     {
-                        PopupModel newItem = new PopupModel
-                        {
-                            popupItem = item.ToString()
+                        PopupModel newItem = new PopupModel { 
+                        
+                            popupItem = item.Full_name,
+                            itemId=item.UID
                         };                        
                         dataCollection.listPopupModel.Add(newItem);                        
                     }
@@ -48,7 +49,73 @@ namespace search_from_archive.Controllers
                     {
                         PopupModel newItem = new PopupModel
                         {
-                            popupItem = item.Full_name
+                            popupItem = item.Full_name,
+                            itemId = item.Uid.ToString()
+                        };
+                        dataCollection.listPopupModel.Add(newItem);
+                    }
+                    return dataCollection;
+                case 3:
+                    dataCollection.popupName = "Разработчик";
+                    var itemCollection_3 = await _context.Personal_develop.OrderBy(p => p.Full_name).ToListAsync();
+                    foreach (var item in itemCollection_3)
+                    {
+                        PopupModel newItem = new PopupModel
+                        {
+                            popupItem = item.Full_name,
+                            itemId = item.uid.ToString()
+                        };
+                        dataCollection.listPopupModel.Add(newItem);
+                    }
+                    return dataCollection;
+                case 4:
+                    dataCollection.popupName = "Начальник отдела";
+                    var itemCollection_4 = await _context.Personal_chiefDepart.OrderBy(p => p.Full_name).ToListAsync();
+                    foreach (var item in itemCollection_4)
+                    {
+                        PopupModel newItem = new PopupModel
+                        {
+                            popupItem = item.Full_name,
+                            itemId = item.uid.ToString()
+                        };
+                        dataCollection.listPopupModel.Add(newItem);
+                    }
+                    return dataCollection;
+                case 5:
+                    dataCollection.popupName = "Начальник группы";
+                    var itemCollection_5 = await _context.Personal_chiefGrp.OrderBy(p => p.Full_name).ToListAsync();
+                    foreach (var item in itemCollection_5)
+                    {
+                        PopupModel newItem = new PopupModel
+                        {
+                            popupItem = item.Full_name,
+                            itemId = item.uid.ToString()
+                        };
+                        dataCollection.listPopupModel.Add(newItem);
+                    }
+                    return dataCollection;
+                case 6:
+                    dataCollection.popupName = "ГИП";
+                    var itemCollection_6 = await _context.Personal_gip.OrderBy(p => p.Full_name).ToListAsync();
+                    foreach (var item in itemCollection_6)
+                    {
+                        PopupModel newItem = new PopupModel
+                        {
+                            popupItem = item.Full_name,
+                            itemId = item.uid.ToString()
+                        };
+                        dataCollection.listPopupModel.Add(newItem);
+                    }
+                    return dataCollection;
+                case 7:
+                    dataCollection.popupName = "Главный специалист";
+                    var itemCollection_7 = await _context.Personal_mainExpert.OrderBy(p => p.Full_name).ToListAsync();
+                    foreach (var item in itemCollection_7)
+                    {
+                        PopupModel newItem = new PopupModel
+                        {
+                            popupItem = item.Full_name,
+                            itemId = item.uid.ToString()
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }

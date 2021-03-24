@@ -17,7 +17,16 @@ div.form-element {
 
 }
 
+.hidden {
+    display: none;
+}
 
+.show_image {
+   
+    background: rgba(0,0,0,0.5) url(/img/1496.gif) no-repeat 50% 50%;
+    z-index: 100;
+    background-size: 5ex;
+}
 
 .btn-primary {
   color: #fff;

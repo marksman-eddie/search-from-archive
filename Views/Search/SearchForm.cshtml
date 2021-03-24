@@ -1,5 +1,4 @@
-﻿
-@using (Html.BeginForm("SearchForm", "Search", FormMethod.Post))
+﻿@using (Html.BeginForm("SearchForm", "Search", FormMethod.Post))
 {
     <div class="container">
         <div class="form-element" style="margin-top: 20px;">
@@ -166,17 +165,17 @@
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary" type="button">Разработчик</button>
+                                                <button name="btn-search-form" value="3" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="3">Разработчик</button>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="3" type="text" class="form-control" placeholder="" name="Developer" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary" type="button">Нач. отдела</button>
+                                                <button name="btn-search-form" value="4" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="4">Нач. отдела</button>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="4" type="text" class="form-control" placeholder="" name="Chief-depart" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                 </div>
@@ -184,28 +183,27 @@
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary" type="button">Нач. группы</button>
+                                                <button name="btn-search-form" value="5" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="5">Нач. группы</button>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="5" type="text" class="form-control" placeholder="" name="Chief-grp" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary" type="button">ГИП</button>
+                                                <button name="btn-search-form" value="6" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="6">ГИП</button>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="6" type="text" class="form-control" placeholder="" name="Gip" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
-
                                 </div>
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
-                                                <button class="btn btn-outline-secondary" type="button">Глав. спец.</button>
+                                                <button name="btn-search-form" value="7" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="7">Глав. спец.</button>
                                             </div>
-                                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                                            <input id="7" type="text" class="form-control" placeholder="" name="Main-expert" aria-describedby="basic-addon1">
                                         </div>
                                     </div>
                                     <div class="col">
@@ -237,30 +235,36 @@
         </div>
         <div class="form-element" style="margin-top: 20px;">
             <button id="btn-search" class="btn btn-primary" data-toggle="popover" data-container="body" data-trigger="focus" data-placement="bottom" data-content="Выберите более конкретизированные параметры поиска" type="submit">Найти</button>
-            <input class="btn btn-primary" type="reset" value="Сброс">
+            <input id="btn-delete" class="btn btn-primary" type="reset" value="Сброс">
         </div>
-    </div>
-    <!--<input id="btn-search" class="btn btn-primary"--> @*type="reset"*@ <!--value="Сброс">-->
-    @*<button id="btn-search" type="button" class="btn btn-lg btn-danger" data-toggle="" data-content="And here's some amazing content. It's very engaging. Right?">dsadsa</button>*@
+    </div>    
     <div id="modal" role="dialog" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
+            
             <div class="modal-content">
+                
                 <div class="modal-header">
                     <h5 id="modalName" class="modal-title"></h5>
                     <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <div class="form-group">
+                
+                <div id="modal-body" class="modal-body">
+                    <div class="loading">
+                        <div  class="d-flex justify-content-center">
+                            <div class="spinner-border" role="status">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group hidden">
                         <label for="exampleFormControlSelect1">Выберите значения из списка(выбор нескольких с помощью клавиши "Ctrl"):</label>
                         <select multiple class="form-control" id="exampleFormControlSelect1">
                         </select>
                     </div>
-                    <div class="form-group2">
+                    <div class="form-group2 hidden">
                         <label for="exampleFormControlSelect2">Выбранные значения:</label>
                         <select multiple class="form-control" id="exampleFormControlSelect2">
                         </select>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" onclick="clearOutput()">Сбросить</button>
