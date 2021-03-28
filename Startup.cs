@@ -28,6 +28,7 @@ namespace search_from_archive
             var options = new DbContextOptionsBuilder<ArchiveContext>().UseSqlServer(Configuration.GetSection("ConnectionString").Value).Options;
             var ArchiveContextServices = new ArchiveContext(options);
             services.AddSingleton(typeof(ArchiveContext), ArchiveContextServices);
+            services.AddMemoryCache();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +47,7 @@ namespace search_from_archive
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseDefaultFiles();
+
             
 
             app.UseRouting();

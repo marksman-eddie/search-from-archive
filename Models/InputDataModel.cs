@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using static search_from_archive.Controllers.SearchController;
-
+﻿using search_from_archive.Enum;
+using System;
 namespace search_from_archive.Models
 {
     public class InputDataModel
@@ -13,7 +9,7 @@ namespace search_from_archive.Models
         public DateTime Date1 { get; set; }
         public DateTime Date2 { get; set; }
         public SearchTarget Target { get; set; }
-        public checkFile CheckFile { get; set; }
+        public CheckFile CheckFile { get; set; }
         public string ProjectName { get; set; }
         public string InvEntoryNumber { get; set; }
         public string PromyselCode { get; set; }

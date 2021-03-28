@@ -6,6 +6,8 @@ using search_from_archive.Models;
 using ArchiveSearch.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.Caching.Memory;
+using System;
 
 namespace search_from_archive.Controllers
 {
@@ -14,9 +16,11 @@ namespace search_from_archive.Controllers
     public class PopupController : Controller
     {
         private readonly ArchiveContext _context;
-        public PopupController(ArchiveContext context)
+        private readonly IMemoryCache _cacheMemory;
+        public PopupController(ArchiveContext context,IMemoryCache cacheMemory)
         {
             _context = context;
+            _cacheMemory = cacheMemory;
         }
         enum Operation
         {
@@ -24,13 +28,19 @@ namespace search_from_archive.Controllers
             Stage = 2,            
         }
         [HttpGet("modalCode")]
-        public async Task<ListPopupModel> ModalCode(int idButton)
+        public async Task<ListPopupModel> ModalCode(int idPopup)
         {
-            ListPopupModel dataCollection = new ListPopupModel();            
-                switch (idButton)
+            
+            if (_cacheMemory.TryGetValue(idPopup, out ListPopupModel popupModel))
+            {
+                return popupModel;
+            }
+            ListPopupModel dataCollection = new ListPopupModel();
+            switch (idPopup)
             {
                 case 1:
                     dataCollection.popupName = "Код проекта";
+                    
                     var itemCollection_1 = await _context.CurProjects.ToListAsync();                    
                     foreach (var item in itemCollection_1)
                     {
@@ -41,7 +51,7 @@ namespace search_from_archive.Controllers
                         };                        
                         dataCollection.listPopupModel.Add(newItem);                        
                     }
-                    return dataCollection;
+                    break;
                 case 2:
                     dataCollection.popupName = "Стадия";
                     var itemCollection_2 = await _context.spr.Where(i => i.Cat_spr_id == 156).ToListAsync();                        
@@ -54,7 +64,7 @@ namespace search_from_archive.Controllers
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }
-                    return dataCollection;
+                    break;
                 case 3:
                     dataCollection.popupName = "Разработчик";
                     var itemCollection_3 = await _context.Personal_develop.OrderBy(p => p.Full_name).ToListAsync();
@@ -67,7 +77,7 @@ namespace search_from_archive.Controllers
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }
-                    return dataCollection;
+                    break;
                 case 4:
                     dataCollection.popupName = "Начальник отдела";
                     var itemCollection_4 = await _context.Personal_chiefDepart.OrderBy(p => p.Full_name).ToListAsync();
@@ -80,7 +90,7 @@ namespace search_from_archive.Controllers
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }
-                    return dataCollection;
+                    break;
                 case 5:
                     dataCollection.popupName = "Начальник группы";
                     var itemCollection_5 = await _context.Personal_chiefGrp.OrderBy(p => p.Full_name).ToListAsync();
@@ -93,7 +103,7 @@ namespace search_from_archive.Controllers
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }
-                    return dataCollection;
+                    break;
                 case 6:
                     dataCollection.popupName = "ГИП";
                     var itemCollection_6 = await _context.Personal_gip.OrderBy(p => p.Full_name).ToListAsync();
@@ -106,7 +116,7 @@ namespace search_from_archive.Controllers
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }
-                    return dataCollection;
+                    break;
                 case 7:
                     dataCollection.popupName = "Главный специалист";
                     var itemCollection_7 = await _context.Personal_mainExpert.OrderBy(p => p.Full_name).ToListAsync();
@@ -119,10 +129,11 @@ namespace search_from_archive.Controllers
                         };
                         dataCollection.listPopupModel.Add(newItem);
                     }
-                    return dataCollection;
+                    break;
 
             }
-            return null;
+            _cacheMemory.Set(idPopup, dataCollection, new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromHours(10)));
+            return dataCollection;
         }
 
         //public async Task<ListPopupModel> getListFromDb(string table, ListPopupModel model)

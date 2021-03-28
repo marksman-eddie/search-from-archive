@@ -1,19 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 using ArchiveSearch.Database;
 using Microsoft.Data.SqlClient;
 using search_from_archive.Models;
-
 using Microsoft.EntityFrameworkCore;
 using ArchiveSearch.Models;
-
 namespace search_from_archive.Controllers
-{
-   
+{   
     public class SearchController : Controller
     {
         private readonly ArchiveContext _context;
@@ -26,21 +20,6 @@ namespace search_from_archive.Controllers
         {
             return View();
         }
-
-        public enum SearchTarget
-        {
-            Projects = 0,
-            Folders = 1,
-            Cards = 2
-        }
-
-        public enum checkFile
-        {
-            NoneCheck = 0,
-            CheckFile = 1
-            
-        }
-
         [HttpPost]
         public IActionResult SearchForm(InputDataModel InputData)
         {

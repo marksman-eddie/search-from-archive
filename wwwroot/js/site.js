@@ -5,16 +5,15 @@
 }); 
 var idInput;    
 $('#modal').on('show.bs.modal', function (event) {
-    $('.loading').removeClass("hidden");
-    $('.form-group').addClass("hidden");
-    $('.form-group2').addClass("hidden");
+    $('.loading').removeClass("hidden");    
+    $('.forHide').addClass("hidden");
     let formGroup = document.getElementById('exampleFormControlSelect1');
     let modalName = document.getElementById('modalName');    
-    modalName.innerText = "";
+    modalName.innerText = "Загрузка";
     formGroup.innerText = "";
     let button = $(event.relatedTarget);
     let content = button.data('content');   
-    fetch('/popup/modalCode?idButton=' + content) //продумать название параметра
+    fetch('/popup/modalCode?idPopup=' + content)
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -26,8 +25,7 @@ $('#modal').on('show.bs.modal', function (event) {
                 response.json().then(function (data) {
                     modalName.innerHTML = data.popupName;
                     $('.loading').addClass("hidden");
-                    $('.form-group').removeClass("hidden");
-                    $('.form-group2').removeClass("hidden");
+                    $('.forHide').removeClass("hidden");                    
                     for (let i = 0; i < data.listPopupModel.length; i++) {
                         if (data.listPopupModel[i].itemId != null) {
                             formGroup.innerHTML += `<option data-id="${data.listPopupModel[i].itemId}">${data.listPopupModel[i].popupItem}</option>`;
@@ -58,9 +56,12 @@ $('#btn-search').on('click', function () {
             $(this).val(attr);
         }
     });    
-    if (clearInput == countInput) {        
+    if (clearInput == countInput) {
+        $("input:text").each(function () {
+            $(this).show();
+        });
         $('#btn-search').popover('show');
-        return false;       
+        return false;
     }    
 });
 
