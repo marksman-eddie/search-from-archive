@@ -20,6 +20,14 @@ namespace search_from_archive.Models
         public string PositionName { get; set; }
         public string MarkCode { get; set; }
         public string MarkName { get; set; }
+        public string Leaftypename { get; set; }
+        public string PaperFormatName { get; set; }
+        public string LeafNumber { get; set; }
+        public string organization { get; set; }
+        public string Otdel { get; set; }
+
+
+
 
 
 

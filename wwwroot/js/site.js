@@ -12,13 +12,14 @@ $('#modal').on('show.bs.modal', function (event) {
     modalName.innerText = "Загрузка";
     formGroup.innerText = "";
     let button = $(event.relatedTarget);
-    let content = button.data('content');   
-    fetch('/popup/modalCode?idPopup=' + content)
+    let content = button.data('content');
+    //fetch('/popup/modalCode?idPopup=' + content)
+    fetch('searchArchive/popup/modalCode?idPopup=' + content)
         .then(
             function (response) {
                 if (response.status !== 200) {
-                    console.log('Looks like there was a problem. Status Code: ' +
-                        response.status);
+                    console.log('Хрен тебе, держи вот это: ' +
+                        response.status +" _ "+response.headers);
                     return;
                 }
                 idInput = content;
@@ -73,7 +74,7 @@ $('#btn-delete').on('click', function () {
 
 
 function addInModal() {
-    // exampleFormControlSelect1 - id select    
+    //exampleFormControlSelect1 - id select    
     let selected = Array.from(exampleFormControlSelect1.options).filter(option => option.selected).map(option => ({ value: option.value, id: option.dataset.id }));    
     let output = document.getElementById('exampleFormControlSelect2');
     output.innerText += "";

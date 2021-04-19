@@ -40,7 +40,7 @@
                         <div class="nav nav-tabs" style="margin-bottom: 10px;" id="nav-tab" role="tablist">
                             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-object" role="tab" aria-controls="nav-object" aria-selected="true">Обьекты</a>
                             <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-fio" role="tab" aria-controls="nav-fio" aria-selected="false">Ф.И.О.</a>
-                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Инф. о листе</a>
+                            <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-list" role="tab" aria-controls="nav-list" aria-selected="false">Инф. о листе</a>
                         </div>
                     </nav>
                     <div id="content-nav-list">
@@ -210,7 +210,62 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">...</div>
+                            <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Наим. листа:</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button name="btn-search-form" value="8" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="8">Тип листа:</button>
+                                            </div>
+                                            <input id="8" type="text" class="form-control" placeholder="" name="Leaftypename" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button name="btn-search-form" value="9" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="9">Формат</button>
+                                            </div>
+                                            <input id="9" type="text" class="form-control" placeholder="" name="PaperFormatName" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Номер листа:</span>
+                                            </div>
+                                            <input type="text" class="form-control" name="LeafNumber">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button name="btn-search-form" value="10" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="10">Отдел:</button>
+                                            </div>
+                                            <input id="10" type="text" class="form-control" placeholder="" name="Otdel" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <button name="btn-search-form" value="11" class="btn btn-outline-secondary" type="button" data-toggle="modal" data-target="#modal" data-content="11">Наим.компании:</button>
+                                            </div>
+                                            <input id="11" type="text" class="form-control" placeholder="" name="organization" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>

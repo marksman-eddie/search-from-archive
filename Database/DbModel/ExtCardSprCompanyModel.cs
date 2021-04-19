@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace search_from_archive.Database.DbModel
 {
-    public class ExtProjectsCurProjectsModel
+    public class ExtCardSprCompanyModel
     {
         public string Full_name { get; set; }
-        public string Uid { get; set; }
-        public long Expr1 { get; set; }
+        public string uid { get; set; }
     }
 }

@@ -20,7 +20,8 @@ namespace ArchiveSearch.Database
         public DbSet<ExtProjectsPersonalChiefGrpModel> Personal_chiefGrp { get; set; }
         public DbSet<ExtProjectsPersonalGipModel> Personal_gip { get; set; }
         public DbSet<ExtProjectsPersonalMainExpertModel> Personal_mainExpert { get; set; }
-
+        public DbSet<ExtProjectsPersonalDepartModel> Personal_Depart { get; set; }
+        public DbSet<ExtCardSprCompanyModel> Card_spr_company { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<OutputDataModel>().HasNoKey();
@@ -60,6 +61,24 @@ namespace ArchiveSearch.Database
             {
                 p.HasNoKey();
                 p.ToView("Projects_personal_mainExpert");
+            }
+            );
+            modelBuilder.Entity<ExtProjectsPersonalDepartModel>(p =>
+            {
+                p.HasNoKey();
+                p.ToView("Projects_personal_depart");
+            }
+            );
+            modelBuilder.Entity<ExtProjectsPersonalDepartModel>(p =>
+            {
+                p.HasNoKey();
+                p.ToView("Projects_personal_depart");
+            }
+            );
+            modelBuilder.Entity<ExtCardSprCompanyModel>(p =>
+            {
+                p.HasNoKey();
+                p.ToView("CardSpr_company");
             }
             );
 
