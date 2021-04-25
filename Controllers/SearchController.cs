@@ -7,15 +7,20 @@ using search_from_archive.Models;
 using Microsoft.EntityFrameworkCore;
 using ArchiveSearch.Models;
 using NLog;
+using search_from_archive.Database;
+using System.Linq;
+
 namespace search_from_archive.Controllers
 {   
     public class SearchController : Controller
     {
         private readonly ArchiveContext _context;
+        private readonly ArchiveContext_gms _context_gms;
         private static Logger _Logger = LogManager.GetCurrentClassLogger();
-        public SearchController (ArchiveContext context)
+        public SearchController (ArchiveContext context, ArchiveContext_gms context_gms)
         {
             _context = context;
+            _context_gms = context_gms;
             
     }
         [HttpGet]
@@ -119,7 +124,15 @@ namespace search_from_archive.Controllers
                     sp.Add(new SqlParameter("@Otdel", InputData.Otdel));
                     cmdToTSql += ",@Otdel=@Otdel";
                 }
-                var Data = _context._OutputDataModels.FromSqlRaw(cmdToTSql, sp.ToArray());
+                IQueryable<OutputDataModel> Data = null;
+                if (Convert.ToInt32(InputData.FromDomain) == 1)
+                {
+                    Data = _context_gms._OutputDataModels.FromSqlRaw(cmdToTSql, sp.ToArray());
+                }
+                else 
+                { 
+                    Data = _context._OutputDataModels.FromSqlRaw(cmdToTSql, sp.ToArray()); 
+                }
                 ListOutputModel listOutput = new ListOutputModel();
                 foreach (var dataRow in Data)
                 {
@@ -147,5 +160,23 @@ namespace search_from_archive.Controllers
         {
             return View();
         }
+
+        //public static ListOutputModel GetListOutputModel(IQueryable<OutputDataModel> Data)
+        //{
+            
+        //    ListOutputModel listOutput = new ListOutputModel();
+        //    foreach (var dataRow in Data)
+        //    {
+        //        OutputDataModel output = new OutputDataModel();
+        //        output.Csid = dataRow.Csid;
+        //        output.FolderName = dataRow.FolderName;
+        //        output.Hn = dataRow.Hn;
+        //        output.Pid = dataRow.Pid;
+        //        output.Uid = dataRow.Uid;
+        //        output.code = dataRow.code;
+        //        listOutput.listOutputData.Add(output);
+        //    }
+        //    return listOutput;
+        //}
     }
 }

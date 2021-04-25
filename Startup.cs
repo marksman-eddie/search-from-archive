@@ -9,6 +9,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ArchiveSearch.Database;
+using search_from_archive.Database;
 
 namespace search_from_archive
 {
@@ -25,9 +26,15 @@ namespace search_from_archive
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            var options = new DbContextOptionsBuilder<ArchiveContext>().UseSqlServer(Configuration.GetSection("ConnectionString").Value).Options;
-            var ArchiveContextServices = new ArchiveContext(options);
-            services.AddSingleton(typeof(ArchiveContext), ArchiveContextServices);
+            var options_gtng = new DbContextOptionsBuilder<ArchiveContext>().UseSqlServer(Configuration.GetSection("ConnectionString_gtng").Value).Options;
+            var ArchiveContextServices_gtng = new ArchiveContext(options_gtng);
+            services.AddSingleton(typeof(ArchiveContext), ArchiveContextServices_gtng);
+            services.AddMemoryCache();
+            services.AddSwaggerGen();
+
+            var options_gms = new DbContextOptionsBuilder<ArchiveContext_gms>().UseSqlServer(Configuration.GetSection("ConnectionString_gms").Value).Options;
+            var ArchiveContextServices_gms = new ArchiveContext_gms(options_gms);
+            services.AddSingleton(typeof(ArchiveContext_gms), ArchiveContextServices_gms);
             services.AddMemoryCache();
             services.AddSwaggerGen();
         }

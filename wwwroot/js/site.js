@@ -13,8 +13,8 @@ $('#modal').on('show.bs.modal', function (event) {
     formGroup.innerText = "";
     let button = $(event.relatedTarget);
     let content = button.data('content');
-    //fetch('/popup/modalCode?idPopup=' + content)
-    fetch('searchArchive/popup/modalCode?idPopup=' + content)
+    fetch('/popup/modalCode?idPopup=' + content)
+    //fetch('searchArchive/popup/modalCode?idPopup=' + content)
         .then(
             function (response) {
                 if (response.status !== 200) {
@@ -26,14 +26,16 @@ $('#modal').on('show.bs.modal', function (event) {
                 response.json().then(function (data) {
                     modalName.innerHTML = data.popupName;
                     $('.loading').addClass("hidden");
-                    $('.forHide').removeClass("hidden");                    
+                    $('.forHide').removeClass("hidden");
+                    let html = '';
                     for (let i = 0; i < data.listPopupModel.length; i++) {
                         if (data.listPopupModel[i].itemId != null) {
-                            formGroup.innerHTML += `<option data-id="${data.listPopupModel[i].itemId}">${data.listPopupModel[i].popupItem}</option>`;
+                            html += `<option data-id="${data.listPopupModel[i].itemId}">${data.listPopupModel[i].popupItem}</option>`;
                         } else {
-                            formGroup.innerHTML += `<option>${data.listPopupModel[i].popupItem}</option>`;
+                            html += `<option>${data.listPopupModel[i].popupItem}</option>`;
                         }
                     }
+                    formGroup.innerHTML = html;
                 });                    
             }            
         )

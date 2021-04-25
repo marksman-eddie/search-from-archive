@@ -10,6 +10,7 @@ namespace search_from_archive.Models
         public DateTime Date2 { get; set; }
         public SearchTarget Target { get; set; }
         public CheckFile CheckFile { get; set; }
+        public FromDomain FromDomain { get; set; }
         public string ProjectName { get; set; }
         public string InvEntoryNumber { get; set; }
         public string PromyselCode { get; set; }
